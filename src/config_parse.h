@@ -1,9 +1,10 @@
 #pragma once
 #include <stdint.h>
+#define READ_SUCCESS   0b00000000000000000000000000000000U
 #define CONFIG_MISSING 0b00000000000000000000000000000001U
 #define MALLOC_ERROR   0b00000000000000000000000000000010U
 #define READ_ERROR     0b00000000000000000000000000000100U
-#define READ_SUCCESS   0b00000000000000000000000000000000U
+#define CONFIG_ERROR   0b00000000000000000000000000001000U
 
 typedef struct repo{
     char* url;
@@ -13,6 +14,7 @@ typedef struct repo{
 
 typedef struct config_parse_result{
     char* account_url;
+    char* icon_placeholder_url;
     repo repositories[4];
     uint32_t repos_filled;
 }t_cpr;
