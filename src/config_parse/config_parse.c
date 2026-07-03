@@ -1,4 +1,4 @@
-#include "config_parse/config_parse.h")
+#include "config_parse/config_parse.h"
 #include <stdio.h>
 #include <malloc.h>
 #include <string.h>
