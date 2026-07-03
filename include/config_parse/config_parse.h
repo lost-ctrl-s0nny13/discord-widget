@@ -7,13 +7,13 @@
 #define CONFIG_ERROR   0b00000000000000000000000000001000U
 
 typedef struct repo{
-    char* url;
+    char* path;
     char* description;
     char* icon_path;
 }repo;
 
 typedef struct config_parse_result{
-    char* account_url;
+    char* account_login;
     char* icon_placeholder_url;
     repo repositories[4];
     uint32_t repos_filled;

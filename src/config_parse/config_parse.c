@@ -57,7 +57,7 @@ uint32_t config_read(t_cpr* result, char* config_path){
         if(expr_found == 1)
         switch(expr_count){
             case 1:
-            if((result->account_url = extract_value(buffer, i+1, semicolon_index[0])) == NULL){
+            if((result->account_login = extract_value(buffer, i+1, semicolon_index[0])) == NULL){
                 free(buffer);
                 return MALLOC_ERROR;
             }
@@ -71,7 +71,7 @@ uint32_t config_read(t_cpr* result, char* config_path){
             expr_found = 0;
             break;
             case 3:
-            if((result->repositories[0].url = extract_value(buffer, i+1, semicolon_index[2])) == NULL){
+            if((result->repositories[0].path = extract_value(buffer, i+1, semicolon_index[2])) == NULL){
                 free(buffer);
                 return MALLOC_ERROR;
             }
@@ -93,7 +93,7 @@ uint32_t config_read(t_cpr* result, char* config_path){
             expr_found = 0;
             break;
             case 6:
-            if((result->repositories[1].url = extract_value(buffer, i+1, semicolon_index[5])) == NULL){
+            if((result->repositories[1].path = extract_value(buffer, i+1, semicolon_index[5])) == NULL){
                 free(buffer);
                 return MALLOC_ERROR;
             }
@@ -115,7 +115,7 @@ uint32_t config_read(t_cpr* result, char* config_path){
             expr_found = 0;
             break;
             case 9:
-            if((result->repositories[2].url = extract_value(buffer, i+1, semicolon_index[8])) == NULL){
+            if((result->repositories[2].path = extract_value(buffer, i+1, semicolon_index[8])) == NULL){
                 free(buffer);
                 return MALLOC_ERROR;
             }
@@ -137,7 +137,7 @@ uint32_t config_read(t_cpr* result, char* config_path){
             expr_found = 0;
             break;
             case 12:
-            if((result->repositories[3].url = extract_value(buffer, i+1, semicolon_index[11])) == NULL){
+            if((result->repositories[3].path = extract_value(buffer, i+1, semicolon_index[11])) == NULL){
                 free(buffer);
                 return MALLOC_ERROR;
             }
@@ -171,13 +171,13 @@ uint32_t config_read(t_cpr* result, char* config_path){
 }
 
 void config_free(t_cpr *result){
-    free(result->account_url);
-    result->account_url = NULL;
+    free(result->account_login);
+    result->account_login = NULL;
     free(result->icon_placeholder_url);
     result->icon_placeholder_url = NULL;
     for(int i = 0; i < 4; ++i){
-        free(result->repositories[i].url);
-        result->repositories[i].url = NULL;
+        free(result->repositories[i].path);
+        result->repositories[i].path = NULL;
         free(result->repositories[i].description);
         result->repositories[i].description = NULL;
         free(result->repositories[i].icon_path);
